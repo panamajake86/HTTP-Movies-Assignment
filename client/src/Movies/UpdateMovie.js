@@ -74,13 +74,13 @@ const UpdateMovie = props => {
                     placeholder='Metascore'
                     value={movie.metascore}
                 />
-                <input 
+                {/* <input 
                     type='text'
                     name='stars'
                     onChange={changeHandler}
                     placeholder='Stars'
                     value={movie.stars}
-                />
+                /> */}
                 <button>Update</button>
             </form>
             {error && <div style={{ color: "red" }}>{error}</div>}
