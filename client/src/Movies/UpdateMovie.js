@@ -13,7 +13,10 @@ const UpdateMovie = props => {
     const [movie, setMovie] = React.useState(initialMovie);
     const [error, setError] = React.useState('');
 
+    
+
     React.useEffect(() => {
+        console.log(props);
         const movieToEdit = props.movies.find(
             movie => `${movie.id}` === props.match.params.id
         );
@@ -38,11 +41,11 @@ const UpdateMovie = props => {
         e.preventDefault();
         setError('');
         axios
-            .put(`http://localhost:5000/api/movies${movie.id}`, movie)
+            .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
             .then(res => {
                 console.log(res);
                 props.updateMovies(res.data);
-                props.history.goBack();
+                props.history.push(`/`);
             });
     };
 
@@ -65,7 +68,7 @@ const UpdateMovie = props => {
                     value={movie.director}
                 />
                 <input 
-                    type='text'
+                    type='number'
                     name='metascore'
                     onChange={changeHandler}
                     placeholder='Metascore'
